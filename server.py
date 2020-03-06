@@ -197,6 +197,7 @@ while(True):
             user = client_dic[socket];
             user_key = aes_client_mapping[socket];
             decrypted_message = AESDecrypt(user_key, message["data"]);
+<<<<<<< HEAD
             """if decrypted_message[:13] == "SFTP Initiate".encode('utf-8'):
                 address_data = receive_message(socket)["data"];
                 f = open("extra" + AESDecrypt(user_key, address_data).decode('utf-8'), 'wb');
@@ -209,6 +210,8 @@ while(True):
                     else:
                         break;
                 f.close();"""
+=======
+>>>>>>> 2868e70a64e79addc0453fd46caf02d3197e2fe6
             print(f'Received message from {user["data"].decode("utf-8")}: {decrypted_message.decode("utf-8")}'); #removed ["data"] for user
             #broadcast(socket, user['header'] + user["data"] + message['header'] + message['data'], "byte");
             broadcast(socket, user['header'] + user["data"], decrypted_message, "byte");
