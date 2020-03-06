@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # SafeChat
 =======
 # SafeChat
@@ -29,4 +28,3 @@ You will be asked to enter the IP address of the interface, a static Port and a 
 6. VoIP, VideoChat
 
 Note: Thanks to mjm918 for parts of the handshake protocol outline.
->>>>>>> 2868e70a64e79addc0453fd46caf02d3197e2fe6

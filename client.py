@@ -4,18 +4,14 @@ import select;
 import errno;
 import sys;
 import os;
-<<<<<<< HEAD
 import pyaudio;
 import threading;
-=======
->>>>>>> 2868e70a64e79addc0453fd46caf02d3197e2fe6
 from Crypto import Random;
 from Crypto.PublicKey import RSA;
 from Crypto.Util import Counter;
 import hashlib;
 from termcolor import colored;
 
-<<<<<<< HEAD
 class VoIP:
     _chunk_size = 1024;
     _audio_format = pyaudio.paInt32;
@@ -82,8 +78,6 @@ def DownloadFile(socket, name, key, buffer=2048):
             break;
     f.close();
 
-=======
->>>>>>> 2868e70a64e79addc0453fd46caf02d3197e2fe6
 def AESEncrypt(key, plaintext):
     IV = os.urandom(16);
     ctr = Counter.new(128, initial_value=int.from_bytes(IV, byteorder='big'));
@@ -132,13 +126,11 @@ def recieveEncryptedMessage(client_socket):
     except Exception as e:
         return False;
 
-<<<<<<< HEAD
 def prompt(specialmessage=""):
     sys.stdout.write("<You> %s" %specialmessage);
-=======
+
 def prompt():
     sys.stdout.write("<You> ");
->>>>>>> 2868e70a64e79addc0453fd46caf02d3197e2fe6
     sys.stdout.flush();
 
 HEADER_LENGTH = 10;
@@ -272,7 +264,6 @@ while(True):
                 message_length = int(message_header.decode('utf-8').strip());
                 message = client_socket.recv(message_length);
                 decrypted_message = AESDecrypt(key_256, message);
-<<<<<<< HEAD
                 if decrypted_message[:13] == "SFTP Initiate".encode('utf-8'):
                     print("Incoming File....");
                     prompt("Enter File Name: ");
@@ -285,8 +276,6 @@ while(True):
                     #address_data = AESDecrypt(key_256, address_data).decode('utf-8');
                     prompt();
                     continue;
-=======
->>>>>>> 2868e70a64e79addc0453fd46caf02d3197e2fe6
                 print(f"{rusername} > {decrypted_message.decode('utf-8')}");
                 prompt();
             except IOError as e:
@@ -300,7 +289,6 @@ while(True):
         else:
             message = sys.stdin.readline();
             if message:
-<<<<<<< HEAD
                 if message == "?:0x0VoIPtestcmd\n":
                     message = message.encode('utf-8');
                     message = AESEncrypt(key_256, message);
@@ -324,10 +312,8 @@ while(True):
                     message_header = f"{len(message):<{HEADER_LENGTH}}".encode('utf-8');
                     client_socket.send(message_header + message);
                     prompt();
-=======
                 message = message.encode('utf-8');
                 message = AESEncrypt(key_256, message);
                 message_header = f"{len(message):<{HEADER_LENGTH}}".encode('utf-8');
                 client_socket.send(message_header + message);
                 prompt();
->>>>>>> 2868e70a64e79addc0453fd46caf02d3197e2fe6
